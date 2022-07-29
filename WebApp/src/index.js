@@ -13,7 +13,6 @@ ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter basename={baseUrl}>
 				<ReduxProvider store={store}>
-			
 					<App />
 			
 				</ReduxProvider>
