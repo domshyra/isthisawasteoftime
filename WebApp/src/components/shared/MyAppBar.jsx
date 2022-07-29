@@ -1,13 +1,12 @@
 import { AppBar, Box, Grid, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { application, challenges } from "../configs/constants";
+import { challenges, home } from "../../configs/constants";
 
-import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link as RouterLink } from "react-router-dom";
-import { theme } from "../styles/theme";
+import { theme } from "../../styles/theme";
 
-const MyAppBar = ({ isAuthenticated = true }) => {
+const MyAppBar = () => {
 	//for hamburger menu
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
@@ -75,9 +74,9 @@ const MyAppBar = ({ isAuthenticated = true }) => {
 						{hamburgerMenus(menuItems)}
 					</Menu>
 
-					<Link underline="none" to="/" component={RouterLink} color="white">
+					<Link underline="none" to={home.path} component={RouterLink} color="white">
 						<Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" } }}>
-							{application.Label}
+							{home.label}
 						</Typography>
 					</Link>
 					<Box sx={{ flexGrow: 1 }} />
@@ -85,9 +84,9 @@ const MyAppBar = ({ isAuthenticated = true }) => {
 					<Box sx={{ display: { xs: "none", md: "flex" } }}></Box>
 					{/*{Compact screens}*/}
 					<Box sx={{ display: { xs: "flex", md: "none" } }}>
-						<Link underline="none" component={RouterLink} to="/" color="inherit" variant="h6">
+						<Link underline="none" component={RouterLink} to={home.path} color="inherit" variant="h6">
 							<IconButton size="large" aria-label="Show home page" color="inherit">
-								<HomeIcon />
+								{home.icon}
 							</IconButton>
 						</Link>
 						{mobileMenus(menuItems)}

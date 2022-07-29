@@ -1,8 +1,8 @@
 import "./styles/custom.css";
 
 import { Route, Routes } from "react-router-dom";
+import { challenges, home } from "./configs/constants";
 
-import Home from "./components/Home";
 import { Layout } from "./components/shared/Layout";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme";
@@ -12,7 +12,8 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<Layout>
 				<Routes>
-					<Route exact path="/" element={<Home />} />
+					<Route exact {...home} />
+					<Route exact {...challenges} />
 				</Routes>
 			</Layout>
 		</ThemeProvider>
