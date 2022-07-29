@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+You will need to instal jest *gloablly* in order to test this application `npm install jest --global`. 
+
+This project is created as a jumping off point to talk about testing in React. Both state by `useState` and then some dispatch code by using `useReducer` and `useContext`. Also to demo Redux and selenuim now too. 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -16,8 +20,9 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.) 
+That is the default from create-react scripts but I have overridden it to use Jest. Will have to use some stuff from there later, but that has changed 
 
 ### `npm run build`
 
