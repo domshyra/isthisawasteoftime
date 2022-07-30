@@ -1,7 +1,6 @@
-﻿
-namespace Api.cosmos
+﻿namespace Api.Cosmos.Tables
 {
-    public interface ICosmosCRUD
+    public interface ICosmosTableCRUD
     {
         Task<string> AddFakeProduct();
         Task<string> GetProduct1Async();

@@ -1,4 +1,4 @@
-using Api.cosmos;
+using Api.Cosmos.Tables;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
 });
 
 // Register interface and classes
-builder.Services.AddScoped<ICosmosRepository, CosmosRepository>();
-builder.Services.AddScoped<ICosmosCRUD, CosmosCRUD>();
+builder.Services.AddScoped<ICosmosTableRepository, CosmosTableRepository>();
+builder.Services.AddScoped<ICosmosTableCRUD, CosmosTableCRUD>();
 
 var app = builder.Build();
 

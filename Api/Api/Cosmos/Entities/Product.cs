@@ -1,7 +1,7 @@
 ﻿using Azure;
 using Azure.Data.Tables;
 
-namespace Api.cosmos
+namespace Api.Cosmos.Entities
 {
     // C# record type for items in the table
     public record Product : ITableEntity

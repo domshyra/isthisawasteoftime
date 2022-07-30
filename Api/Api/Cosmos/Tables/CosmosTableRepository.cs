@@ -1,19 +1,19 @@
-﻿using Azure;
+﻿using Api.Cosmos.Entities;
+using Azure;
 using Azure.Data.Tables;
-using System.Linq.Expressions;
 
-namespace Api.cosmos
+namespace Api.Cosmos.Tables
 {
     // https://docs.microsoft.com/en-us/azure/cosmos-db/table/create-table-dotnet?tabs=azure-cli%2Cwindows
 
     /// <summary>
     /// 
     /// </summary>
-    public class CosmosRepository : ICosmosRepository
+    public class CosmosTableRepository : ICosmosTableRepository
     {
 
         private readonly TableClient _tableClient;
-        public CosmosRepository()
+        public CosmosTableRepository()
         {
             TableServiceClient tableServiceClient = new(Environment.GetEnvironmentVariable("COSMOS_CONNECTION_STRING"));
 
@@ -36,7 +36,7 @@ namespace Api.cosmos
                 Quantity = 8,
                 Sale = true
             };
-            
+
             var prod2 = new Product()
             {
                 RowKey = "68719518390",
@@ -52,18 +52,18 @@ namespace Api.cosmos
             await _tableClient.AddEntityAsync(prod2);
             return prod1;
         }
-        
+
 
         public async Task<T> GetEntityAsync<T>(string rowKey, string partitionKey) where T : class, ITableEntity, new()
         {
             try
             {
-                var product = await _tableClient.GetEntityAsync<T>(
+                var result = await _tableClient.GetEntityAsync<T>(
                     rowKey: rowKey,
                     partitionKey: partitionKey
                 );
 
-                return product;
+                return result;
             }
             catch (RequestFailedException e)
             {
@@ -81,7 +81,7 @@ namespace Api.cosmos
 
             try
             {
-                await _tableClient.UpsertEntityAsync<T>(item);
+                await _tableClient.UpsertEntityAsync(item);
             }
             catch (RequestFailedException e)
             {
@@ -91,8 +91,8 @@ namespace Api.cosmos
 
             return item;
 
-        }        
-        
+        }
+
         public async Task DeleteEntityAsync(string rowKey, string partitionKey)
         {
             try
@@ -113,7 +113,7 @@ namespace Api.cosmos
             {
                 AsyncPageable<T> result = _tableClient.QueryAsync<T>(x => x.PartitionKey == partitionKey);
 
-                await foreach (var page in result.AsPages())
+                await foreach (Page<T>? page in result.AsPages())
                 {
 
                     entities.AddRange(page.Values);
@@ -126,8 +126,8 @@ namespace Api.cosmos
             }
 
             return entities;
-        }        
-        
+        }
+
         public async Task<IEnumerable<T>> GetEntitiesByRowKeyAsync<T>(string rowKey) where T : class, ITableEntity, new()
         {
             List<T> entities = new();
@@ -135,7 +135,7 @@ namespace Api.cosmos
             {
                 AsyncPageable<T> result = _tableClient.QueryAsync<T>(x => x.RowKey == rowKey);
 
-                await foreach (var page in result.AsPages())
+                await foreach (Page<T>? page in result.AsPages())
                 {
 
                     entities.AddRange(page.Values);

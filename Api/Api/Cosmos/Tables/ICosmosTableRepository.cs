@@ -1,8 +1,9 @@
-﻿using Azure.Data.Tables;
+﻿using Api.Cosmos.Entities;
+using Azure.Data.Tables;
 
-namespace Api.cosmos
+namespace Api.Cosmos.Tables
 {
-    public interface ICosmosRepository
+    public interface ICosmosTableRepository
     {
         Task<Product> AddProductAsync();
         Task DeleteEntityAsync(string rowKey, string partitionKey);

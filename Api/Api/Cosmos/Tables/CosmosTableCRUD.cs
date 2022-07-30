@@ -1,22 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using Api.Cosmos.Entities;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Api.cosmos
+namespace Api.Cosmos.Tables
 {
-    public class CosmosCRUD : ICosmosCRUD
+    public class CosmosTableCRUD : ICosmosTableCRUD
     {
-        private readonly ICosmosRepository _cosmosRepository;
+        private readonly ICosmosTableRepository _cosmosRepository;
 
-        public CosmosCRUD(ICosmosRepository cosmosRepository)
+        public CosmosTableCRUD(ICosmosTableRepository cosmosRepository)
         {
             _cosmosRepository = cosmosRepository ?? throw new ArgumentException(null, nameof(cosmosRepository));
         }
 
         public async Task<string> GetProduct1Async()
-            => Json.SerializeToJson(await _cosmosRepository.GetEntityAsync<Product>("68719518388", "gear-surf-surfboards"));                
+            => Json.SerializeToJson(await _cosmosRepository.GetEntityAsync<Product>("68719518388", "gear-surf-surfboards"));
         public async Task<string> GetProduct2Async()
-            => Json.SerializeToJson(await _cosmosRepository.GetEntityAsync<Product>("68719518390", "gear-surf-surfboards"));        
-        
+            => Json.SerializeToJson(await _cosmosRepository.GetEntityAsync<Product>("68719518390", "gear-surf-surfboards"));
+
         public async Task<string> GetProductsAsync()
             => Json.SerializeToJson(await _cosmosRepository.GetEntitiesByPartionKeyAsync<Product>("gear-surf-surfboards"));
         public async Task<string> AddFakeProduct()

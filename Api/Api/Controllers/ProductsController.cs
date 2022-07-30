@@ -1,4 +1,4 @@
-using Api.cosmos;
+using Api.Cosmos.Tables;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +8,10 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly ICosmosCRUD _cosmosCRUD;
+        private readonly ICosmosTableCRUD _cosmosCRUD;
 
 
-        public ProductController(ICosmosCRUD cosmosCRUD)
+        public ProductController(ICosmosTableCRUD cosmosCRUD)
         {
             _cosmosCRUD = cosmosCRUD;
         }
