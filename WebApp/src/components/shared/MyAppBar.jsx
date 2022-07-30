@@ -1,6 +1,6 @@
 import { AppBar, Box, Grid, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { challenges, home } from "../../configs/constants";
+import { challenges, home, weather } from "../../configs/constants";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link as RouterLink } from "react-router-dom";
@@ -17,7 +17,7 @@ const MyAppBar = () => {
 		setAnchorEl(null);
 	};
 
-	let menuItems = [{ ...challenges }];
+	let menuItems = [{ ...challenges }, { ...weather }];
 
 	const hamburgerMenus = (items) => {
 		return items.map((item) => (

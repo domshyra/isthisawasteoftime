@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { config } from "../../configs/config";
+import config from "../../configs/config";
 
 /**
  * Used to fetch data from apis
@@ -47,7 +47,7 @@ export default function useFetch(url, defaultObject = {}) {
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [defaultObject, url]);
+	}, [url]);
 
 	return { loaded, data, error };
 }
