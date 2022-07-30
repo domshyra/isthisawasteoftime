@@ -1,3 +1,5 @@
+using Api.cosmos;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +18,10 @@ builder.Services.AddCors(options =>
                             .WithMethods("POST", "PUT", "DELETE", "GET");
                 });
 });
+
+// Register interface and classes
+builder.Services.AddScoped<ICosmosRepository, CosmosRepository>();
+builder.Services.AddScoped<ICosmosCRUD, CosmosCRUD>();
 
 var app = builder.Build();
 
