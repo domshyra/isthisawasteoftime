@@ -3,6 +3,8 @@ import Home from "../components/shared/Home";
 import HomeIcon from "@mui/icons-material/Home";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import React from "react";
+import ThermostatIcon from "@mui/icons-material/Thermostat";
+import WeatherForecast from "../components/WeatherForecast";
 
 const primaryKey = "Id";
 
@@ -26,4 +28,12 @@ export const home = {
 	element: <Home />,
 	label: "Music challenges app",
 	icon: <HomeIcon />,
+};
+
+export const weather = {
+	path: "/weather",
+	element: <WeatherForecast />,
+	apiPath: "WeatherForecast",
+	label: "Weather forecast",
+	icon: <ThermostatIcon />,
 };
