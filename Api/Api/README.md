@@ -1,0 +1,1 @@
+﻿run `$env:COSMOS_CONNECTION_STRING = "<cosmos-connection-string>"` to set up the api to talk to cosmos

@@ -1,3 +1,5 @@
+using Api.Cosmos.Tables;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +18,10 @@ builder.Services.AddCors(options =>
                             .WithMethods("POST", "PUT", "DELETE", "GET");
                 });
 });
+
+// Register interface and classes
+builder.Services.AddScoped<ICosmosTableRepository, CosmosTableRepository>();
+builder.Services.AddScoped<ICosmosTableCRUD, CosmosTableCRUD>();
 
 var app = builder.Build();
 
