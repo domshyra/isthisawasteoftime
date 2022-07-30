@@ -47,7 +47,7 @@ export default function useFetch(url, defaultObject = {}) {
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [defaultObject, url]);
+	}, [url]);
 
 	return { loaded, data, error };
 }

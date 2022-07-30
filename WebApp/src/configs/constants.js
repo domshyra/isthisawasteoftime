@@ -31,9 +31,8 @@ export const home = {
 };
 
 export const weather = {
-	path: "/weather",
+	path: "/WeatherForecast",
 	element: <WeatherForecast />,
-	apiPath: "WeatherForecast",
 	label: "Weather forecast",
 	icon: <ThermostatIcon />,
 };

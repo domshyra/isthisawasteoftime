@@ -5,7 +5,7 @@ import useFetch from "../tools/hooks/useFetch";
 import { weather } from "../configs/constants";
 
 export default function WeatherForecast() {
-	const { loaded, data: tableItems, error } = useFetch(weather.apiPath);
+	const { loaded, data: tableItems, error } = useFetch(weather.path);
 
 	const tableRows = (result) => {
 		return result.map((item, index) => (

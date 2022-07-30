@@ -8,8 +8,14 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3000",
+            "url": "https://localhost:3000",
             "webRoot": "${workspaceFolder}/WebApp"
+        },
+        {
+            "name": "run from vs code",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run startFromVsCode",
         }
     ]
 }

@@ -7,6 +7,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy",
+                policy =>
+                {
+                    policy.WithOrigins("https://localhost:7028/", "https://localhost:3000")
+                            .WithMethods("POST", "PUT", "DELETE", "GET");
+                });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,7 +27,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("MyPolicy");
 app.UseAuthorization();
 
 app.MapControllers();

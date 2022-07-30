@@ -1,5 +1,5 @@
 const config = {
-	ApplicationServiceUri: "https://localhost:7028/",
+	ApplicationServiceUri: "https://localhost:7028",
 	ClientId: "TODO",
 	TenantId: "TODO",
 	RedirectUri: "TODO",
