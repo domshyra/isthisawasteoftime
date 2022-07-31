@@ -1,6 +1,4 @@
 ﻿using Api.Cosmos.Entities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Api.Cosmos.Tables
 {
@@ -23,25 +21,5 @@ namespace Api.Cosmos.Tables
         public async Task<string> AddFakeProduct()
             => Json.SerializeToJson(await _cosmosRepository.AddProductAsync());
 
-    }
-
-    public class Json
-    {
-        /// <summary>
-        /// Object to json with camcel case
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string SerializeToJson(object? value)
-        {
-            DefaultContractResolver contractResolver = new()
-            {
-                NamingStrategy = new CamelCaseNamingStrategy()
-            };
-            return JsonConvert.SerializeObject(value, new JsonSerializerSettings()
-            {
-                ContractResolver = contractResolver,
-            });
-        }
     }
 }

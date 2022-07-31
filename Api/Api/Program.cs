@@ -1,4 +1,5 @@
 using Api.Cosmos.Tables;
+using Api.MusicLogic.Challenges;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddCors(options =>
 
 // Register interface and classes
 builder.Services.AddScoped<ICosmosTableRepository, CosmosTableRepository>();
+builder.Services.AddScoped<IChallengesProvider, ChallengesProvider>();
 builder.Services.AddScoped<ICosmosTableCRUD, CosmosTableCRUD>();
 
 var app = builder.Build();
