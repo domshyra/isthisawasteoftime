@@ -1,16 +1,15 @@
 import { Autocomplete, Box, Grid, InputAdornment, Skeleton, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import Item from "@mui/material/Grid";
 import PropTypes from "prop-types";
-import {difficultyLevels} from './challengeLevels'
+import { difficultyLevels } from "./challengeLevels";
 import { styled } from "@mui/material/styles";
 
 /**
  * Changes color based on difficulty levels
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
 const ChallengeDifficultyComplete = ({ id, loaded = true, initialValue = difficultyLevels[0].label }) => {
 	const [selected, setSelected] = useState(difficultyLevels[0]);
@@ -66,7 +65,7 @@ const ChallengeDifficultyComplete = ({ id, loaded = true, initialValue = difficu
 							>
 								<Grid container spacing={2}>
 									<Grid item xs={3}>
-										<Item>{option.icon}</Item>
+										<Item>{React.cloneElement(option.icon, { fontSize: "small" })}</Item>
 									</Grid>
 									<Grid item xs={9}>
 										<Item>{option.label}</Item>
@@ -84,10 +83,9 @@ const ChallengeDifficultyComplete = ({ id, loaded = true, initialValue = difficu
 							fontColor={selected.color}
 							InputProps={{
 								...params.InputProps,
-								borderBottom: `2px solid ${selected.color}`,
 								startAdornment: (
 									<InputAdornment position="start" sx={{ color: selected.color }}>
-										<EmojiEventsIcon />
+										{selected.icon}
 									</InputAdornment>
 								),
 								endAdornment: <> {params.InputProps.endAdornment} </>,
