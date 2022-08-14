@@ -1,13 +1,10 @@
 import { TableCell, TableRow } from "@mui/material";
+import { challenges, challengesForm } from "../../configs/constants";
 
-import MyAppTable from "./shared/MyAppTable";
+import MyAppIndex from "../shared/MyAppIndex";
 import React from "react";
-import useFetch from "../tools/hooks/useFetch";
-import { weather } from "../configs/constants";
 
-export default function WeatherForecast() {
-	const { loaded, data: tableItems, error } = useFetch(weather.path);
-
+export default function Challenges() {
 	const tableRows = (result) => {
 		return result.map((item, index) => (
 			<TableRow key={item.id}>
@@ -36,13 +33,12 @@ export default function WeatherForecast() {
 	];
 
 	return (
-		<MyAppTable
-			label={"Weather forcast"}
-			loaded={loaded}
-			error={error}
+		<MyAppIndex
+			{...challenges}
+			createPath={challengesForm.path}
+			url={challenges.apiPath}
 			tableRows={tableRows}
 			tableHeaders={tableHeaders}
-			tableItems={tableItems}
 		/>
 	);
 }

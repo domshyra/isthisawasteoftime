@@ -1,3 +1,5 @@
 {
-    "prettier.configPath": "C:\\Users\\dominic\\source\\repos\\isthisawasteoftime\\WebApp\\.prettierrc.json"
+    "prettier.configPath": "C:\\Users\\dominic\\source\\repos\\isthisawasteoftime\\WebApp\\.prettierrc.json",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable"
 }
