@@ -34,7 +34,7 @@ export default function useFetch(url, defaultObject = {}) {
 					return Promise.reject(error);
 				}
 				if (response.status === 204) {
-					return Promise.resolve(defaultObject);
+					return "";
 				}
 				return response.json();
 			})
