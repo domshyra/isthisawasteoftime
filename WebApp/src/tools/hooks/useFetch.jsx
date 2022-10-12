@@ -18,11 +18,11 @@ export default function useFetch(url, defaultObject = {}) {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		const fetchUrl = `${config.ApplicationServiceUri}${url}`;
+		const fetchUrl = `${Config.CommunityProtectionServiceUri}${url}`;
 		fetch(fetchUrl, {
 			method: "GET",
 			headers: {
-				"Accept": "application/x-www-form-urlencoded",
+				Accept: "application/x-www-form-urlencoded",
 				"Content-Type": "application/x-www-form-urlencoded",
 			},
 			mode: "cors",
@@ -49,17 +49,22 @@ export default function useFetch(url, defaultObject = {}) {
 					}
 				},
 				(error) => {
-					if (isMountedRef.current) setError(error);
+					if (isMountedRef.current) {
+						console.error(error);
+						setError(error);
+					}
 				}
 			)
 			.catch((e) => {
 				if (isMountedRef.current) {
-					console.error(`Download error: ${e.message}`);
+					console.error(error);
 					setError(e);
 				}
 			})
 			.finally(() => {
-				if (isMountedRef.current) setLoaded(true);
+				if (isMountedRef.current) {
+					setLoaded(true);
+				}
 			});
 
 		//If the caller gets unmounted then we don't waste react resources
@@ -67,6 +72,8 @@ export default function useFetch(url, defaultObject = {}) {
 			controller.abort();
 			isMountedRef.current = false;
 		};
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [url]);
 
 	return { loaded, data, error };
